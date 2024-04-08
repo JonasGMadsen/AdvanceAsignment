@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment
+namespace AdvanceAsignment.Items
 {
-    public class AttackItem  
+    public abstract class AttackItem
     {
         public string Name { get; set; }
         public int Hit { get; set; }

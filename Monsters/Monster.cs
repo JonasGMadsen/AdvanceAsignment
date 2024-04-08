@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdvanceAsignment.Items;
 
 namespace AdvanceAsignment.Monsters
 {
@@ -38,7 +39,7 @@ namespace AdvanceAsignment.Monsters
             if (DefenceItem != null)
             {
                 dmg -= DefenceItem.ReduceHitpoints;
-                dmg = Math.Max(dmg, 0); // Ensure damage doesn't go below 0
+                dmg = Math.Max(dmg, 0); // ensures that damage doesn't go below 0
             }
 
             Hitpoints -= dmg;

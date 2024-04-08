@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdvanceAsignment.Factory;
 using AdvanceAsignment.Monsters;
 
 
 namespace AdvanceAsignment
 {
+
     public class World
     {
- 
+
+        private static World _instance;
+
+        public static World Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new World(50, 50);
+                }
+                return _instance;
+            }
+        }
+
 
         public List<Monster> MonstersList;
         public List<WorldObject> ObjectList;
@@ -19,7 +35,6 @@ namespace AdvanceAsignment
         public int XCord { get; set; }
         public int YCord { get; set; }
 
-        public Wolf Wolf { get; set; }
 
         public World(int xCordinates, int yCordinate)
         {
@@ -30,33 +45,37 @@ namespace AdvanceAsignment
         }
 
 
+        public void AddMonster(string type, string name, int hitPoints, int x, int y)
+        {
+            Monster monster = MonsterFactory.CreateMonster(type, name, hitPoints, x, y);
+            MonstersList.Add(monster);
+        }
+
         public string GetSquareContent(int x, int y)
-        {     
-
-            // Check if there is a wolf at this position
-            if (Wolf.X == x && Wolf.Y == y)
+        {
+            foreach (var monster in MonstersList)
             {
-                return "[R]";
+                if (monster.X == x && monster.Y == y)
+                {
+                    return "[M]"; // Generic representation for a Monster
+                }
             }
-
             return "[ ]";
         }
 
         public void PrintGameMap()
         {
-            Console.Clear(); 
+            Console.Clear();
 
             for (int y = 0; y < YCord; y++)
             {
                 for (int x = 0; x < XCord; x++)
                 {
                     string squareContent = GetSquareContent(x, y);
-
                     Console.Write(squareContent);
                 }
                 Console.WriteLine();
             }
-
         }
     }
 }
