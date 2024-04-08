@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdvanceAsignment
 {
-    public class AttackItem
+    public class AttackItem  
     {
-        public int Attack {  get; set; }
+        public string Name { get; set; }
+        public int Hit { get; set; }
+        public int Range { get; set; }
+
+        public AttackItem() { }
     }
 }

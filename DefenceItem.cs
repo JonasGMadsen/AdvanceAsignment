@@ -8,6 +8,8 @@ namespace AdvanceAsignment
 {
     public class DefenceItem
     {
-        public int Defense { get; set; }
+        public string Name { get; set; }
+        public int ReduceHitpoints { get; set; }
+
     }
 }
