@@ -9,7 +9,7 @@ namespace AdvanceAsignment.Monsters
 {
     public abstract class Monster : IMonster
     {
-        public event EventHandler<string> OnAction; //Will prop be changed. Skal måske enda fjerne en masse methods fordi interfacet ikke skal have for mange. Til overvejelse
+        public event EventHandler<string> OnAction; //Will prop be changed. Skal måske enda fjerne en masse methods fordi interfacet ikke skal have for mange. Til overvejelse. MÅSKE EN PLAYER CLASS
 
         public string Name { get; set; }
         public int Hitpoints { get; set; }
