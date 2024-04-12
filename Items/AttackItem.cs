@@ -6,22 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdvanceAsignment.Items
 {
-    public abstract class AttackItem : WorldObject
+    public abstract class AttackItem : Item
     {
-        public string Name { get; set; }
-        public int Hit { get; set; }
-        public int Range { get; set; }
-
-        public AttackItem(string name, int xCordinate, int yCordinate, bool looteable, bool removeable, int hit, int range) : base(name, xCordinate, yCordinate, looteable, removeable) 
+        public Damage.Damage DamageDeal { get; private set; }
+        public AttackItem(string name, string description, Damage.Damage damage) : base(name, description)
         {
-            Name = name;
-            Hit = hit;
-            Range = range;
-        }
-
-        public bool IsInRange(int originX, int originY, int targetX, int targetY)
-        {
-            return Math.Sqrt((targetX - originX) * (targetX - originX) + (targetY - originY) * (targetY - originY)) <= Range;
+            DamageDeal = damage;
         }
     }
 }

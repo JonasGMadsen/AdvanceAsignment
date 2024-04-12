@@ -7,7 +7,7 @@ using AdvanceAsignment.Items;
 
 namespace AdvanceAsignment.Monsters
 {
-    public abstract class Monster : WorldObject //something with damage
+    public abstract class Monster : WorldObject
     {
         public Position Position { get; set; }
 

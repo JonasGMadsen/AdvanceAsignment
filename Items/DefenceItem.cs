@@ -1,23 +1,18 @@
-﻿using System;
+﻿using AdvanceAsignment.Damage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment
+namespace AdvanceAsignment.Items
 {
-    public class DefenceItem : WorldObject
+    public class DefenceItem : Item
     {
-        public string Name { get; set; }
-        public int ReduceHitpoints { get; set; }
-
-        public DefenceItem(string name, int xCordinate, int yCordinate, bool looteable, bool removeable, int reduceHitpoints) : base(name, xCordinate, yCordinate, looteable, removeable)
+        public DamageReduction DamageReduction { get; set; }
+        public DefenceItem(string name, string description, DamageReduction damageReduction) : base(name, description)
         {
-            Name = name;
-            ReduceHitpoints = reduceHitpoints;
+            DamageReduction = damageReduction;
         }
-
-        
-
     }
 }

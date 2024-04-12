@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AdvanceAsignment.Monsters
 {
     public class Goblin : Monster
-    { //need changing
+    { 
         public Goblin(Position position, int hitpoints, string name) : base(position, hitpoints, name)
         {
 
