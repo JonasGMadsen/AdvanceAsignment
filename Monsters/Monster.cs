@@ -9,7 +9,7 @@ namespace AdvanceAsignment.Monsters
 {
     public abstract class Monster : IMonster
     {
-        public event EventHandler<string> OnAction; //Will prop be changed
+        public event EventHandler<string> OnAction; //Will prop be changed. Skal måske enda fjerne en masse methods fordi interfacet ikke skal have for mange. Til overvejelse
 
         public string Name { get; set; }
         public int Hitpoints { get; set; }
@@ -24,6 +24,23 @@ namespace AdvanceAsignment.Monsters
             Hitpoints = hitPoints;
             X = x;
             Y = y;
+        }
+
+        public void EquipAttackItem(AttackItem item) //needs to be changed
+        {
+            if (item != null)
+            {
+                this.AttackItem = item;
+            }
+        }
+
+        public void EquipDefenceItem(DefenceItem item) //needs to be changed
+        {
+            if (item != null)
+            {
+                this.DefenceItem = item;
+                
+            }
         }
 
         public void AttemptAttack(Monster enemy)
