@@ -13,24 +13,29 @@ namespace AdvanceAsignment.Protagonist
 
         public int HitPoints { get; set; }
 
-        public AttackItem EquippedAttackItem { get; private set; }
+        public Position Position { get; set; }
 
-        public DefenceItem EquippedDefenceItem { get; private set; }
+        public Random DamageGenerator = new Random();
 
-        public void EquipAttackItem(AttackItem item)
-        {
-
-            EquippedAttackItem = item;
-        }
-
-        public void EquipDefenceItem(DefenceItem item)
-        {
-            EquippedDefenceItem = item;
-        }
 
         public bool IsDead
         {
             get { return HitPoints <= 0; }
         }
+
+        public Protagonist(string name, int hitPoints = 100)
+        {
+            Name = name;
+            HitPoints = hitPoints;
+            Position = new Position(0, 0);
+        }
+
+      //  public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
+      //  {
+      //      Lav metode + logic
+      //  }
+
+        //En metioder til items.
     }
+
 }
