@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace AdvanceAsignment
 {
-    public class WorldObject
+    public class WorldObject : World
     {
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removeable { get; set; }
 
-        public WorldObject() { }
+        public WorldObject(string name, int xCordinate, int yCordinate, bool looteable, bool removeable) : base(xCordinate, xCordinate)
+        {
+            Name = name;
+            Lootable = looteable;
+            Removeable = removeable;
+            
+        }
     }
 }

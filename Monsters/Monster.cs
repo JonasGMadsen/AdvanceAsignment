@@ -9,6 +9,8 @@ namespace AdvanceAsignment.Monsters
 {
     public abstract class Monster : IMonster
     {
+        public event EventHandler<string> OnAction; //Will prop be changed
+
         public string Name { get; set; }
         public int Hitpoints { get; set; }
         public AttackItem AttackItem { get; set; }
@@ -26,24 +28,27 @@ namespace AdvanceAsignment.Monsters
 
         public void DoDamage(Monster enemy)
         {
-            if (AttackItem != null)
+            if (AttackItem != null && AttackItem.IsInRange(X, Y, enemy.X, enemy.Y))
             {
                 int damage = AttackItem.Hit;
                 enemy.ReceiveDamage(damage);
-                Console.WriteLine($"{Name} attacked {enemy.Name} for {damage} damage");
+                OnAction?.Invoke(this, $"{Name} attacked {enemy.Name} for {damage} damage");
             }
         }
 
-        public void ReceiveDamage(int dmg)
+        public void ReceiveDamage(int damage)
         {
+            int originalDamage = damage;
+
             if (DefenceItem != null)
             {
-                dmg -= DefenceItem.ReduceHitpoints;
-                dmg = Math.Max(dmg, 0); // ensures that damage doesn't go below 0
+                damage -= DefenceItem.ReduceHitpoints;
+                damage = Math.Max(damage, 0);
+                OnAction?.Invoke(this, $"{Name}'s {DefenceItem.Name} reduced the damage from {originalDamage} to {damage}.");
             }
 
-            Hitpoints -= dmg;
-            Console.WriteLine($"{Name} received {dmg} damage");
+            Hitpoints -= damage;
+            OnAction?.Invoke(this, $"{Name} received {damage} damage");
 
             if (Hitpoints <= 0)
             {
@@ -51,9 +56,9 @@ namespace AdvanceAsignment.Monsters
             }
         }
 
-        private void Die()
+        public void Die()
         {
-            Console.WriteLine($"{Name} is dead");
+
         }
 
     }

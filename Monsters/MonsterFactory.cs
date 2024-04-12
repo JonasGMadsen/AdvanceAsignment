@@ -1,11 +1,10 @@
-﻿using AdvanceAsignment.Monsters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment.Factory
+namespace AdvanceAsignment.Monsters
 {
     public static class MonsterFactory
     {
@@ -27,4 +26,4 @@ namespace AdvanceAsignment.Factory
 
         }
     }
-    }
+}

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AdvanceAsignment.Factory;
 using AdvanceAsignment.Monsters;
 
 
@@ -36,12 +35,12 @@ namespace AdvanceAsignment
         public int YCord { get; set; }
 
 
-        public World(int xCordinates, int yCordinate)
+        public World(int xCordinates, int yCordinates)
         {
             MonstersList = new List<Monster>();
             ObjectList = new List<WorldObject>();
             XCord = xCordinates;
-            YCord = yCordinate;
+            YCord = yCordinates;
         }
 
 
