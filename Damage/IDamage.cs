@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment
+namespace AdvanceAsignment.Damage
 {
-    public abstract class WorldObject
+    public interface IDamage
     {
- 
+        public abstract Damage DealDamage();
     }
 }

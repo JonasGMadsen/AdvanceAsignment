@@ -12,6 +12,9 @@ namespace AdvanceAsignment
     public class World
     {
 
+        public int XCord { get; set; }
+        public int YCord { get; set; }
+
         private static World _instance;
 
         public static World Instance
@@ -31,8 +34,7 @@ namespace AdvanceAsignment
         public List<WorldObject> ObjectList;
 
 
-        public int XCord { get; set; }
-        public int YCord { get; set; }
+        
 
 
         public World(int xCordinates, int yCordinates)
@@ -46,7 +48,7 @@ namespace AdvanceAsignment
 
         public void AddMonster(string type, string name, int hitPoints, int x, int y)
         {
-            Monster monster = MonsterFactory.CreateMonster(type, name, hitPoints, x, y);
+            Monster monster = GoblinFactory.CreateMonster(type, name, hitPoints, x, y);
             MonstersList.Add(monster);
         }
 

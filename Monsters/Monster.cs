@@ -7,87 +7,31 @@ using AdvanceAsignment.Items;
 
 namespace AdvanceAsignment.Monsters
 {
-    public abstract class Monster : IMonster
+    public abstract class Monster : WorldObject //something with damage
     {
-        public event EventHandler<string> OnAction; //Will prop be changed. Skal måske enda fjerne en masse methods fordi interfacet ikke skal have for mange. Til overvejelse. MÅSKE EN PLAYER CLASS
+        public Position Position { get; set; }
+
+        public int HitPoints { get; set; }
 
         public string Name { get; set; }
-        public int Hitpoints { get; set; }
-        public AttackItem AttackItem { get; set; }
-        public DefenceItem DefenceItem { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
 
-        public Monster(string name, int hitPoints, int x, int y)
+        public Random DamageGenerator = new Random();
+
+        public bool IsDead
         {
+            get { return HitPoints <= 0; }
+        }
+
+        public Monster(Position position, int hitPoints, string name)
+        {
+            hitPoints = hitPoints;
             Name = name;
-            Hitpoints = hitPoints;
-            X = x;
-            Y = y;
+            //Måske noget logging
         }
 
-        public void EquipAttackItem(AttackItem item) //needs to be changed
-        {
-            if (item != null)
-            {
-                this.AttackItem = item;
-            }
-        }
+        public abstract Damage.Damage TakeDamage(Damage.Damage taken);
 
-        public void EquipDefenceItem(DefenceItem item) //needs to be changed
-        {
-            if (item != null)
-            {
-                this.DefenceItem = item;
-                
-            }
-        }
-
-        public void AttemptAttack(Monster enemy)
-        {
-            if (AttackItem != null && IsInRange(enemy))
-            {
-                DoDamage(enemy);
-            }
-        }
-
-        private bool IsInRange(Monster enemy)
-        {
-            double distance = Math.Sqrt((enemy.X - X) * (enemy.X - X) + (enemy.Y - Y) * (enemy.Y - Y));
-            return distance <= AttackItem.Range;
-        }
-
-        public void DoDamage(Monster enemy)
-        {
-            int damage = AttackItem.Hit;
-            enemy.ReceiveDamage(damage);
-            OnAction?.Invoke(this, $"{Name} attacked {enemy.Name} for {damage} damage");
-        }
-
-        public void ReceiveDamage(int damage)
-        {
-            int originalDamage = damage;
-
-            if (DefenceItem != null)
-            {
-                damage -= DefenceItem.ReduceHitpoints;
-                damage = Math.Max(damage, 0);
-                OnAction?.Invoke(this, $"{Name}'s {DefenceItem.Name} reduced the damage from {originalDamage} to {damage}.");
-            }
-
-            Hitpoints -= damage;
-            OnAction?.Invoke(this, $"{Name} received {damage} damage");
-
-            if (Hitpoints <= 0)
-            {
-                Die();
-            }
-        }
-
-        public void Die()
-        {
-
-        }
+        public abstract Damage.Damage GiveDamage();
 
     }
 }
