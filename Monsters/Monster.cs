@@ -26,14 +26,25 @@ namespace AdvanceAsignment.Monsters
             Y = y;
         }
 
+        public void AttemptAttack(Monster enemy)
+        {
+            if (AttackItem != null && IsInRange(enemy))
+            {
+                DoDamage(enemy);
+            }
+        }
+
+        private bool IsInRange(Monster enemy)
+        {
+            double distance = Math.Sqrt((enemy.X - X) * (enemy.X - X) + (enemy.Y - Y) * (enemy.Y - Y));
+            return distance <= AttackItem.Range;
+        }
+
         public void DoDamage(Monster enemy)
         {
-            if (AttackItem != null && AttackItem.IsInRange(X, Y, enemy.X, enemy.Y))
-            {
-                int damage = AttackItem.Hit;
-                enemy.ReceiveDamage(damage);
-                OnAction?.Invoke(this, $"{Name} attacked {enemy.Name} for {damage} damage");
-            }
+            int damage = AttackItem.Hit;
+            enemy.ReceiveDamage(damage);
+            OnAction?.Invoke(this, $"{Name} attacked {enemy.Name} for {damage} damage");
         }
 
         public void ReceiveDamage(int damage)
