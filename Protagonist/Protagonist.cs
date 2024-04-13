@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdvanceAsignment;
 
 namespace AdvanceAsignment.Protagonist
 {
@@ -30,12 +31,17 @@ namespace AdvanceAsignment.Protagonist
             Position = new Position(0, 0);
         }
 
-      //  public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
-      //  {
-      //      Lav metode + logic
-      //  }
+        public bool ProtagMovePosition(Position position)
+        {
+            if (World.Instance.IsInsideWorld(position))
+            {
+                Position = position;
+                return true;
+            }
+            return false;
+        }
 
-        //En metioder til items.
+        //En metode til items.
     }
 
 }
