@@ -23,9 +23,11 @@ namespace AdvanceAsignment
 
         private XmlDocument configFile = new XmlDocument();
 
-
+        #region 
+        //Singleton Instance
         private static World _instance;
 
+        //Getting the instance
         public static World Instance
         {
             get
@@ -36,8 +38,8 @@ namespace AdvanceAsignment
                 }
                 return _instance;
             }
-        }        
-
+        }
+        #endregion
         public bool IsInsideWorld(Position position)
         {
             if (position.X > XCord || position.Y > YCord)
