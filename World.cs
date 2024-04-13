@@ -64,10 +64,29 @@ namespace AdvanceAsignment
 
         private World()
         {
-            configFile.Load("ConfigFile");
-            XmlNode nameNode = configFile.DocumentElement.SelectSingleNode("Name");
-            XmlNode xNode = configFile.DocumentElement.SelectSingleNode("Xworld");
-            XmlNode yNode = configFile.DocumentElement.SelectSingleNode("Yworld");
+            try
+            {
+                configFile.Load("ConfigFile.xml");  
+                XmlNode nameNode = configFile.DocumentElement.SelectSingleNode("Name");
+                XmlNode xNode = configFile.DocumentElement.SelectSingleNode("Xworld");
+                XmlNode yNode = configFile.DocumentElement.SelectSingleNode("Yworld");
+
+                if (xNode != null && yNode != null)
+                {
+                    Xworld = int.Parse(xNode.InnerText);  
+                    Yworld = int.Parse(yNode.InnerText);
+                }
+                else
+                {
+                    // Handle the case where nodes are missing
+                    throw new InvalidOperationException("Critical configuration data missing in XML.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions and possibly log them
+                throw new InvalidOperationException("Failed to load world configuration.", ex);
+            }
 
         }
 
