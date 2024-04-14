@@ -24,7 +24,8 @@ namespace AdvanceAsignment.Monsters
 
         public Monster(Position position, double hitPoints, string name)
         {
-            hitPoints = hitPoints;
+            Position = position;
+            HitPoints = hitPoints;
             Name = name;
             //Måske noget logging
         }

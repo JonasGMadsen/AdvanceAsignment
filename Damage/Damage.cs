@@ -8,9 +8,9 @@ namespace AdvanceAsignment.Damage
 {
     public class Damage
     {
-        public int DamageNumber { get; set; }
+        public double DamageNumber { get; set; }
 
-        public Damage(int dmg) 
+        public Damage(double dmg) 
         {
             if (dmg < 0)
             {

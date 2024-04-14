@@ -37,6 +37,7 @@ namespace AdvanceAsignment.Protagonist
             Name = name;
             HitPoints = hitPoints;
             Position = new Position(0, 0);
+            State = new NormalState();
         }
 
         public bool ProtagMovePosition(Position position)
@@ -64,14 +65,33 @@ namespace AdvanceAsignment.Protagonist
         public void PlayerRecovered()
         {
             State = new NormalState();
+
+
+        }
+
+        public void EquipOffensive(AttackItem item)
+        {
+            WieldedAttackItem = item;
         }
 
         public Damage.Damage CalculateGiveDamage()
         {
+            if (State == null)
+            {
+                Console.WriteLine("State is not initialized.");
+            }
+            if (WieldedAttackItem == null)
+            {
+                Console.WriteLine("No weapon equipped.");
+                return new Damage.Damage(1);  // Return no damage
+            }
+
             return State.CalculateGiveDamage(
                 new Damage.Damage(DamageGenerator.Next(2, 10)),
                 WieldedAttackItem);
         }
+
+
 
     }
 }
