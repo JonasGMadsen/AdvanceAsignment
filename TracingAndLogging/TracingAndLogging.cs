@@ -9,7 +9,7 @@ namespace AdvanceAsignment.TracingAndLogging
 {
     public class TracingAndLogging : ITracingAndLogging
     {
-        private TraceSource traceSource = new TraceSource("AdvanceAsignment");
+        private TraceSource traceSource = new TraceSource("AdvanceAsignment"); //TODO. Try and implment bruh
         private TextWriterTraceListener textWriter;
 
         private static TracingAndLogging instance;
