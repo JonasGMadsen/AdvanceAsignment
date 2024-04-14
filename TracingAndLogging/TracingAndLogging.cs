@@ -12,13 +12,17 @@ namespace AdvanceAsignment.TracingAndLogging
         private TraceSource traceSource = new TraceSource("AdvanceAsignment");
         private TextWriterTraceListener textWriter;
 
-        private static readonly Lazy<TracingAndLogging> instance = new Lazy<TracingAndLogging>(() => new TracingAndLogging()); //Lazy initialization. For a sikre thread safety. Experimentielt. 
+        private static TracingAndLogging instance;
 
         public static TracingAndLogging Instance
         {
             get
             {
-                return instance.Value;
+                if (instance == null)
+                {
+                    instance = new TracingAndLogging();
+                }
+                return instance;
             }
         }
 

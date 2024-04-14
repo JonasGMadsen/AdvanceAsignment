@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using AdvanceAsignment.Monsters;
+using AdvanceAsignment.TracingAndLogging;
 
 
 namespace AdvanceAsignment
@@ -23,7 +24,7 @@ namespace AdvanceAsignment
 
         private XmlDocument configFile = new XmlDocument();
 
-        #region 
+        #region
         //Singleton Instance
         private static World _instance;
 
