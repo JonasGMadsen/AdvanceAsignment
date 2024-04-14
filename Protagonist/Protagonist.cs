@@ -87,7 +87,7 @@ namespace AdvanceAsignment.Protagonist
             }
 
             return State.CalculateGiveDamage(
-                new Damage.Damage(DamageGenerator.Next(2, 10)),
+                new Damage.Damage(DamageGenerator.Next(2, 10)), //To future me. Don't call namespaces the same thing as the class in the namespace, so I don't have to call Damage.Damage fx xD
                 WieldedAttackItem);
         }
 
