@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdvanceAsignment;
+using AdvanceAsignment.Damage;
+using AdvanceAsignment.Protagonist.States;
 
 namespace AdvanceAsignment.Protagonist
 {
@@ -12,11 +14,17 @@ namespace AdvanceAsignment.Protagonist
     {
         public string Name { get; set; }
 
-        public int HitPoints { get; set; }
+        public double HitPoints { get; set; }
 
         public Position Position { get; set; }
 
         public Random DamageGenerator = new Random();
+
+        public AttackItem WieldedAttackItem { get; set; }
+
+        public DefenceItem WornDefenceItem { get; set; }
+        public IStateMachine State { get; private set; }
+
 
 
         public bool IsDead
@@ -41,7 +49,29 @@ namespace AdvanceAsignment.Protagonist
             return false;
         }
 
-        //En metode til items.
-    }
+        public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
+        {
+            Damage.Damage dmgToTake = State.CalculateTakeDamage(taken, WornDefenceItem);
+            HitPoints -= dmgToTake.DamageNumber;
+            return dmgToTake;
+        }
 
+        public void WeakenedPlayer()
+        {
+            State = new WeakednedState();
+        }
+
+        public void PlayerRecovered()
+        {
+            State = new NormalState();
+        }
+
+        public Damage.Damage CalculateGiveDamage()
+        {
+            return State.CalculateGiveDamage(
+                new Damage.Damage(DamageGenerator.Next(2, 10)),
+                WieldedAttackItem);
+        }
+
+    }
 }

@@ -11,7 +11,7 @@ namespace AdvanceAsignment.Monsters
     {
         public Position Position { get; set; }
 
-        public int HitPoints { get; set; }
+        public double HitPoints { get; set; }
 
         public string Name { get; set; }
 
@@ -22,7 +22,7 @@ namespace AdvanceAsignment.Monsters
             get { return HitPoints <= 0; }
         }
 
-        public Monster(Position position, int hitPoints, string name)
+        public Monster(Position position, double hitPoints, string name)
         {
             hitPoints = hitPoints;
             Name = name;

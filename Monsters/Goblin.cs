@@ -8,7 +8,7 @@ namespace AdvanceAsignment.Monsters
 {
     public class Goblin : Monster
     { 
-        public Goblin(Position position, int hitpoints, string name) : base(position, hitpoints, name)
+        public Goblin(Position position, double hitpoints, string name) : base(position, hitpoints, name)
         {
 
         }
@@ -20,7 +20,8 @@ namespace AdvanceAsignment.Monsters
 
         public override Damage.Damage TakeDamage(Damage.Damage taken)
         {
-            throw new NotImplementedException();
+            HitPoints -= taken.DamageNumber;
+            return new Damage.Damage(taken.DamageNumber);
         }
     }
 }
