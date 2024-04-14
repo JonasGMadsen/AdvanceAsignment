@@ -50,7 +50,7 @@ namespace AdvanceAsignment.Protagonist
             return false;
         }
 
-        public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
+        public Damage.Damage CalculateTakeDamage(Damage.Damage taken) //To future me. Don't call namespaces the same thing as the class in the namespace, so I don't have to call Damage.Damage fx xD
         {
             Damage.Damage dmgToTake = State.CalculateTakeDamage(taken, WornDefenceItem);
             HitPoints -= dmgToTake.DamageNumber;
@@ -83,7 +83,7 @@ namespace AdvanceAsignment.Protagonist
             if (WieldedAttackItem == null)
             {
                 Console.WriteLine("No weapon equipped.");
-                return new Damage.Damage(1);  // Return no damage
+                return new Damage.Damage(1);  // Return no damage       //To future me. Don't call namespaces the same thing as the class in the namespace, so I don't have to call Damage.Damage fx xD
             }
 
             return State.CalculateGiveDamage(
