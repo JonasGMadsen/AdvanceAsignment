@@ -41,6 +41,14 @@ namespace AdvanceAsignment.Protagonist
         {
             get { return HitPoints <= 0; }
         }
+        //Returns true if the player is weakened
+        public bool IsWeakened
+        {
+            get
+            {
+                return State.GetType() == typeof(WeakednedState);
+            }
+        }
         /// <summary>
         /// Constructer
         /// </summary>
@@ -71,7 +79,7 @@ namespace AdvanceAsignment.Protagonist
         }
 
         /// <summary>
-        /// Calculates the damage the protagonist takes
+        /// Calculates the damage the protagonist takes. Depending on state
         /// </summary>
         /// <param name="taken">The damage taken</param>
         /// <returns>The damage taken</returns>
@@ -107,7 +115,7 @@ namespace AdvanceAsignment.Protagonist
         }
 
         /// <summary>
-        /// Calcaulates the damage the protagonist deals
+        /// Calcaulates the damage the protagonist deals. Depending on state
         /// </summary>
         /// <returns>The damage the protagonist deals. If the protagonist has nothing equiped. He/she deals 1 damage</returns>
         public Damage.Damage CalculateGiveDamage()
