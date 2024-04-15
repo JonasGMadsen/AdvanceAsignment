@@ -8,8 +8,9 @@ namespace AdvanceAsignment.TraceAndLog
 {
     internal interface ITracingAndLogging
     {
+        void TraceMethodEntry(string methodName, string parameters);
+        void TraceMethodExit(string methodName, string returnValue);
         void WriteInfoToText(string information);
-        void WriteWarningToText(string warning);
         void WriteErrorToText(string error);
     }
 }

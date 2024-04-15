@@ -53,11 +53,6 @@ namespace AdvanceAsignment.TraceAndLog
             traceSource.TraceEvent(TraceEventType.Information, 200, writeToTxt);
         }
 
-        public void WriteWarningToText(string warning)
-        {
-            traceSource.TraceEvent(TraceEventType.Warning, 100, warning);
-        }
-
         public void Flush()
         {
             traceSource.Flush();
