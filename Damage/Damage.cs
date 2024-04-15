@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment.Damage //Don't call this
+namespace AdvanceAsignment.Damage //Don't give it this
 {
-    public class Damage //The same as this in the future
+    /// <summary>
+    /// Represents the amount of damage dealt
+    /// </summary>
+    public class Damage //The same as the above for the future
     {
+        //Numerical value of the damage
         public double DamageNumber { get; set; }
 
+        /// <summary>
+        /// Ensures damage can't be negative
+        /// </summary>
+        /// <param name="dmg">Initial damage value</param>
+        /// <exception cref="ArgumentException"></exception>
         public Damage(double dmg) 
         {
             if (dmg < 0)
