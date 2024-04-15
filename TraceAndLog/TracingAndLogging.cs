@@ -33,9 +33,19 @@ namespace AdvanceAsignment.TraceAndLog
             traceSource.Listeners.Add(textWriter);
         }
 
+        public void TraceMethodEntry(string methodName, string parameters)
+        {
+            traceSource.TraceEvent(TraceEventType.Verbose, 0, $"Entering {methodName}. Parameters: {parameters}");
+        }
+
+        public void TraceMethodExit(string methodName, string returnValue)
+        {
+            traceSource.TraceEvent(TraceEventType.Verbose, 0, $"Exiting {methodName}. Return Value: {returnValue}");
+        }
+
         public void WriteErrorToText(string error)
         {
-            throw new NotImplementedException();
+            traceSource.TraceEvent(TraceEventType.Error, 300, error);
         }
 
         public void WriteInfoToText(string writeToTxt)
@@ -46,6 +56,11 @@ namespace AdvanceAsignment.TraceAndLog
         public void WriteWarningToText(string warning)
         {
             traceSource.TraceEvent(TraceEventType.Warning, 100, warning);
+        }
+
+        public void Flush()
+        {
+            traceSource.Flush();
         }
 
     }

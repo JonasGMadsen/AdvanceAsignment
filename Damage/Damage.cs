@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvanceAsignment.Damage
+namespace AdvanceAsignment.Damage //Don't call this
 {
-    public class Damage
+    public class Damage //The same as this in the future
     {
         public double DamageNumber { get; set; }
 

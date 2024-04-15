@@ -67,6 +67,8 @@ namespace AdvanceAsignment
 
         private World()
         {
+            TracingAndLogging.Instance.TraceMethodEntry(nameof(World), "No parameters");
+
             try
             {
                 configFile.Load("ConfigFile.xml");  
@@ -78,17 +80,25 @@ namespace AdvanceAsignment
                 {
                     Xworld = int.Parse(xNode.InnerText);  
                     Yworld = int.Parse(yNode.InnerText);
+                    //Handle the case where the XML is loaded succesfully
+                    TracingAndLogging.Instance.WriteInfoToText("World configuration loaded successfully.");
                 }
                 else
                 {
-                    // Handle the case where nodes are missing
+                    TracingAndLogging.Instance.WriteErrorToText("Critical configuration data missing in XML.");
+                    // Handle the case where nodes are missing in the XML
                     throw new InvalidOperationException("Critical configuration data missing in XML.");
                 }
             }
             catch (Exception ex)
             {
+                TracingAndLogging.Instance.WriteErrorToText($"Failed to load world configuration: {ex.Message}");
                 // Handle other exceptions and possibly log them
                 throw new InvalidOperationException("Failed to load world configuration.", ex);
+            }
+            finally
+            {
+                TracingAndLogging.Instance.TraceMethodExit(nameof(World), "void");
             }
 
         }       
