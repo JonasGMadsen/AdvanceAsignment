@@ -10,5 +10,7 @@ namespace AdvanceAsignment.Damage
     public interface IStateMachine
     {
         Damage CalculateGiveDamage(Damage given, AttackItem? offensiveItem);
+        Damage CalculateTakeDamage(Damage taken, DefenceItem? defensiveItem);
+
     }
 }
