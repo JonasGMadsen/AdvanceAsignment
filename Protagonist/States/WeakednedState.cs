@@ -18,14 +18,5 @@ namespace AdvanceAsignment.Protagonist.States
             }
             return new Damage.Damage(given.DamageNumber - 1);
         }
-
-        public Damage.Damage CalculateTakeDamage(Damage.Damage taken, DefenceItem? defenceItem)
-        {
-            if (defenceItem != null)
-            {
-                return new Damage.Damage(taken.DamageNumber - defenceItem.DamageReduction.DamageReductionNumber + 1);
-            }
-            return new Damage.Damage(taken.DamageNumber + 1);
-        }
     }
 }
