@@ -9,7 +9,7 @@ namespace AdvanceAsignment.TraceAndLog
 {
     public class TracingAndLogging : ITracingAndLogging
     {
-        private TraceSource traceSource = new TraceSource("AdvanceAsignment"); //TODO. Try and implment bruh
+        private TraceSource traceSource = new TraceSource("AdvanceAsignment"); 
         private TextWriterTraceListener textWriter;
 
         private static TracingAndLogging instance;
@@ -29,7 +29,7 @@ namespace AdvanceAsignment.TraceAndLog
         private TracingAndLogging()
         {
             traceSource.Switch = new SourceSwitch("TracingAndLogging", "All");
-            textWriter = new TextWriterTraceListener(new StreamWriter("log.txt") { AutoFlush = true });
+            textWriter = new TextWriterTraceListener(new StreamWriter("log.txt") { AutoFlush = true }); //Path 
             traceSource.Listeners.Add(textWriter);
         }
 
