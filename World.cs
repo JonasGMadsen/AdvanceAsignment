@@ -111,20 +111,20 @@ namespace AdvanceAsignment
                     Name = nameNode.InnerText;
                     Xworld = int.Parse(xNode.InnerText);  
                     Yworld = int.Parse(yNode.InnerText);
-                    //Handle the case where the XML is loaded succesfully. Skal vel slettes nu hvor man bruger doxygen?
+                    //Handle the case where the XML is loaded succesfully.
                     TracingAndLogging.Instance.WriteInfoToText("World configuration loaded successfully.");
                 }
                 else
                 {
                     TracingAndLogging.Instance.WriteErrorToText("Critical configuration data missing in XML.");
-                    // Handle the case where nodes are missing in the XML. Skal vel slettes nu hvor man bruger doxygen?
+                    // Handle the case where nodes are missing in the XML.
                     throw new InvalidOperationException("Critical configuration data missing in XML.");
                 }
             }
             catch (Exception ex)
             {
                 TracingAndLogging.Instance.WriteErrorToText($"Failed to load world configuration: {ex.Message}");
-                // Handle other exceptions and possibly log them. Skal vel slettes nu hvor man bruger doxygen?
+                // Handle other exceptions and possibly log them
                 throw new InvalidOperationException("Failed to load world configuration.", ex);
             }
             finally
