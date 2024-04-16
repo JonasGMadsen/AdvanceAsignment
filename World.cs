@@ -13,6 +13,8 @@ namespace AdvanceAsignment
 
     public class World
     {
+        //World name
+        public string Name { get; set; }
         // X axis
         public int XCord { get; set; }
         // Y axis
@@ -106,6 +108,7 @@ namespace AdvanceAsignment
 
                 if (xNode != null && yNode != null)
                 {
+                    Name = nameNode.InnerText;
                     Xworld = int.Parse(xNode.InnerText);  
                     Yworld = int.Parse(yNode.InnerText);
                     //Handle the case where the XML is loaded succesfully. Skal vel slettes nu hvor man bruger doxygen?

@@ -12,6 +12,7 @@ namespace AdvanceAsignment.Monsters
         {
             Goblin goblin = new Goblin(position, hitpoints, name);
 
+            World.Instance.AddObjectToWorld(goblin);
             return goblin;
         }
     }
